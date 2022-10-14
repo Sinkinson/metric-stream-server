@@ -33,7 +33,8 @@ function parseRecord(data) {
 app.use(express.json());
 
 app.all('/*', (req, res) => {
-  const result = parseRecord(req.body);
+  console.log(req.body);
+  // const result = parseRecord(req.body);
   res.status(200).end();
 });
 
