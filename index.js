@@ -30,9 +30,10 @@ function parseRecord(data) {
 }
 
 // app.use(bodyParser.raw({ type: 'application/x-protobuf' }));
+app.use(express.json());
 
 app.all('/*', (req, res) => {
-  const result = parseRecord(req);
+  const result = parseRecord(req.body);
   console.log(result);
   res.status(200).end();
 });
