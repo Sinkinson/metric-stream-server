@@ -32,7 +32,7 @@ function parseRecord(data) {
 // app.use(bodyParser.raw({ type: 'application/x-protobuf' }));
 
 app.all('/*', (req, res) => {
-  const result = parseRecord(req.body);
+  const result = parseRecord(req);
   console.log(result);
   res.status(200).end();
 });
