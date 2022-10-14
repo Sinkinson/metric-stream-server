@@ -31,7 +31,6 @@ function parseRecord(data) {
 app.use(express.json());
 
 app.all('/*', (req, res) => {
-  console.log(req.body);
   const data = req.body.records.map(obj => obj.data);
   console.log(data);
   const result = parseRecord(data);
