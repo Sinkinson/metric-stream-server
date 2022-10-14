@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 4318;
 const pb = require('google-protobuf');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 
 const pbMetrics = require('./opentelemetry/proto/collector/metrics/v1/metrics_service_pb');
 
@@ -29,7 +29,7 @@ function parseRecord(data) {
     return result
 }
 
-app.use(bodyParser.raw({ type: 'application/x-protobuf' }));
+// app.use(bodyParser.raw({ type: 'application/x-protobuf' }));
 
 app.all('/*', (req, res) => {
   const result = parseRecord(req.body);
