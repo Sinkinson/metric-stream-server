@@ -7,7 +7,9 @@ const bodyParser = require('body-parser');
 const pbMetrics = require('./opentelemetry/proto/collector/metrics/v1/metrics_service_pb');
 
 function parseRecord(data) {
-    const result = []
+    const result = [];
+
+    console.log(data);
 
     while (data.length) {
         const reader = new pb.BinaryReader(data)
