@@ -18,6 +18,7 @@ function parseRecord(data) {
 
         const parsed = pbMetrics.ExportMetricsServiceRequest.deserializeBinary(message);
 
+        console.log(parsed);
         result.push(parsed.toObject())
 
         data = data.subarray(messageTo)
