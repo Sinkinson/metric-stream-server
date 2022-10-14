@@ -9,8 +9,6 @@ const pbMetrics = require('./opentelemetry/proto/collector/metrics/v1/metrics_se
 function parseRecord(data) {
     const result = [];
 
-    console.log(data);
-
     while (data.length) {
         const reader = new pb.BinaryReader(data)
         const messageLength = reader.decoder_.readUnsignedVarint32()
@@ -33,7 +31,7 @@ function parseRecord(data) {
 app.use(express.json());
 
 app.all('/*', (req, res) => {
-  const result = parseRecord(req.body);
+  const result = parseRecord(req.body.records);
   console.log(result);
   res.status(200).end();
 });
