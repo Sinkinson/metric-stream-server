@@ -11,7 +11,7 @@ function parseRecord(body) {
     const base64Str = record.data;
     const Uint8Array = toUint8Array(base64Str);
     const metric = protoConvertor(Uint8Array);
-    metrics.push(metric);
+    metrics.push(metric[0]);
   }
 
   metricData["records"] = metrics;
