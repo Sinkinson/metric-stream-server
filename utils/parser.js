@@ -31,22 +31,25 @@ function protoConvertor(data) {
         const parsed = pbMetrics.ExportMetricsServiceRequest.deserializeBinary(message);
 
         // result.push(parsed.toObject())
-        result.push(objectConvertor(parsed));
+        result.push(objectConvertor(parsed, 0));
         data = data.subarray(messageTo)
     }
 
     return result;
 }
 
-function objectConvertor(obj) {
+function objectConvertor(obj, level) {
   if (Array.isArray(obj)) {
-    return JSON.stringify(obj.map(e => objectConvertor(e)));
+    const value = obj.map(e => objectConvertor(e, level + 1));
+    if (level === 0) console.log(value);
+    return value;
   } else if (typeof obj === 'object' && obj !== null) {
     let newObj = {};
-    Object.keys(obj).forEach(key => newObj[key] = objectConvertor(obj[key]));
-    return JSON.stringify(newObj);
+    Object.keys(obj).forEach(key => newObj[key] = objectConvertor(obj[key], level + 1));
+    if (level === 0) console.log(newObj);
+    return newObj;
   } else {
-    return JSON.stringify(obj);
+    return obj;
   }
 }
 
