@@ -31,14 +31,14 @@ function protoConvertor(data) {
         const parsed = pbMetrics.ExportMetricsServiceRequest.deserializeBinary(message);
 
         // result.push(parsed.toObject())
-        result.push(objectConvertor(parsed, 0));
+        result.push(objectConvertor(parsed));
         data = data.subarray(messageTo)
     }
 
     return result;
 }
 
-function objectConvertor(obj, level) {
+function objectConvertor(obj) {
   if (Array.isArray(obj)) {
     return obj.map(e => objectConvertor(e));
   } else if (typeof obj === 'object' && obj !== null) {
