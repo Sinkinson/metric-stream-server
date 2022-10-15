@@ -1,6 +1,6 @@
 const pb = require('google-protobuf');
 
-const pbMetrics = require('./opentelemetry/proto/collector/metrics/v1/metrics_service_pb');
+const pbMetrics = require('../opentelemetry/proto/collector/metrics/v1/metrics_service_pb');
 const toUint8Array = require('base64-to-uint8array');
 
 function parseRecord(body) {
