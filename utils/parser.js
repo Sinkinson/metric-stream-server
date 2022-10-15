@@ -45,7 +45,7 @@ function objectConvertor(obj) {
     return obj.map(e => objectConvertor(e));
   } else if (typeof obj === 'object' && obj !== null) {
     let newObj = {};
-    Object.keys(obj).forEach(key => obj[key] = objectConvertor(obj[key]));
+    Object.keys(obj).forEach(key => newObj[key] = objectConvertor(obj[key]));
     return newObj;
   } else {
     return obj;
