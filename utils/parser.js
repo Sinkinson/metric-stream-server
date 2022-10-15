@@ -39,11 +39,9 @@ function protoConvertor(data) {
 }
 
 function objectConvertor(obj) {
-  console.log(obj);
-  
   if (Array.isArray(obj)) {
     return obj.map(e => objectConvertor(e));
-  } else if (typeof obj === 'object') {
+  } else if (typeof obj === 'object' && obj !== null) {
     let newObj = {};
     Object.keys(obj).forEach(key => obj[key] = objectConvertor(obj[key]));
     return newObj;
