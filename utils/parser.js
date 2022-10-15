@@ -31,11 +31,23 @@ function protoConvertor(data) {
         const parsed = pbMetrics.ExportMetricsServiceRequest.deserializeBinary(message);
 
         // result.push(parsed.toObject())
-        result.push(JSON.stringify(parsed.array));
+        result.push(objectConvertor(parsed));
         data = data.subarray(messageTo)
     }
 
     return result
+}
+
+function objectConvertor(obj) {
+  if (Array.isArray(obj)) {
+    return obj.map(e => objectConvertor(e));
+  } else if (typeof obj === 'object') {
+    let newObj = {};
+    Object.keys(obj).forEach(key => obj[key] = objectConvertor(obj[key]));
+    return newObj;
+  } else {
+    return obj;
+  }
 }
 
 exports.parseRecord = parseRecord;
