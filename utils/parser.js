@@ -31,7 +31,7 @@ function protoConvertor(data) {
         const parsed = pbMetrics.ExportMetricsServiceRequest.deserializeBinary(message);
 
         // result.push(parsed.toObject())
-        result.push(objectConvertor(parsed));
+        result.push(objectConvertor(parsed.toObject()));
         data = data.subarray(messageTo)
     }
 
@@ -40,7 +40,7 @@ function protoConvertor(data) {
 
 function objectConvertor(obj) {
   if (!obj) return obj;
-  
+
   if (Array.isArray(obj)) {
     return obj.map(e => objectConvertor(e));
   } else if (typeof obj === 'object') {
