@@ -40,13 +40,10 @@ function protoConvertor(data) {
 
 function objectConvertor(obj, level) {
   if (Array.isArray(obj)) {
-    const value = obj.map(e => objectConvertor(e, level + 1));
-    if (level === 0) console.log(value);
-    return value;
+    return obj.map(e => objectConvertor(e));
   } else if (typeof obj === 'object' && obj !== null) {
     let newObj = {};
-    Object.keys(obj).forEach(key => newObj[key] = objectConvertor(obj[key], level + 1));
-    if (level === 0) console.log(newObj);
+    Object.keys(obj).forEach(key => newObj[key] = objectConvertor(obj[key]));
     return newObj;
   } else {
     return obj;
