@@ -39,6 +39,8 @@ function protoConvertor(data) {
 }
 
 function objectConvertor(obj) {
+  console.log(obj);
+  
   if (Array.isArray(obj)) {
     return obj.map(e => objectConvertor(e));
   } else if (typeof obj === 'object' && obj !== null) {
