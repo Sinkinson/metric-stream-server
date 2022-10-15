@@ -31,7 +31,8 @@ function protoConvertor(data) {
         const parsed = pbMetrics.ExportMetricsServiceRequest.deserializeBinary(message);
 
         // result.push(parsed.toObject())
-        result.push(objectConvertor(parsed.toObject()));
+        console.log(typeof parsed);
+        result.push(objectConvertor(parsed));
         data = data.subarray(messageTo)
     }
 
