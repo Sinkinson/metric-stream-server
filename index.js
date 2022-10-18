@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 4318;
+const PORT = process.env.PORT || 3002;
 const { parseRecord } = require('./utils/parser');
 
 app.use(express.json());
